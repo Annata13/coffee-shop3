@@ -1,0 +1,142 @@
+// =============================================================================
+// Страница: карточка товара.
+// =============================================================================
+@use '../abstracts' as *;
+
+// Блок: back-bar — липкая строка «Back to catalog».
+.back-bar {
+  position: sticky;
+  top: var(--header-height);
+  z-index: var(--z-sticky);
+  padding-block: 0.75rem;
+  border-bottom: 1px solid var(--color-border);
+  @include glass(rgb(245 230 211 / 0.92), 12px);
+
+  &__inner { @include container; }
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.5rem 0.35rem 0.25rem;
+    border-radius: var(--radius-xs);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--color-text-muted);
+    transition: color var(--duration-fast) var(--ease-out);
+    @include focus-ring(var(--color-ring), 2px);
+
+    &:hover { color: var(--color-text); }
+    &:active { color: var(--color-primary-active); }
+  }
+
+  &__arrow { transition: transform var(--duration-normal) var(--ease-out); }
+
+  &__link:hover &__arrow { transform: translateX(-3px); }
+}
+
+.product {
+  &__inner {
+    @include container;
+    display: grid;
+    gap: clamp(2rem, 1.5rem + 4vw, 5rem);
+    align-items: start;
+    grid-template-columns: 1fr;
+    padding-block: clamp(2rem, 1.5rem + 3vw, 3.5rem);
+
+    @include from(lg) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  // Левая колонка прилипает при скролле только там, где есть запас высоты.
+  &__media {
+    @include from(lg) {
+      position: sticky;
+      top: calc(var(--header-height) + 5rem);
+    }
+  }
+
+  &__figure {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 1;
+    border-radius: var(--radius-xl);
+    background-color: var(--color-surface-muted);
+    box-shadow: var(--shadow-md);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__flag {
+    position: absolute;
+    top: 1.15rem;
+    left: 1.15rem;
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  &__badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  &__title {
+    font-family: var(--font-serif);
+    font-size: var(--text-4xl);
+    line-height: var(--leading-tight);
+  }
+
+  &__rating { margin-top: 0.75rem; }
+
+  &__label {
+    margin-bottom: 0.65rem;
+    font-size: var(--text-xs);
+    letter-spacing: var(--tracking-wider);
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+
+  &__notes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  &__desc {
+    line-height: var(--leading-relaxed);
+  }
+
+  &__price-row {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  &__price {
+    font-family: var(--font-serif);
+    font-size: var(--text-price);
+    line-height: 1;
+  }
+
+  &__price-unit {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+  }
+
+  &__promises { margin-top: 1.25rem; }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+}

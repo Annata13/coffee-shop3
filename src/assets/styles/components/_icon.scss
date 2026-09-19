@@ -1,0 +1,31 @@
+// =============================================================================
+// Блок: icon — обёртка над SVG-спрайтом Lucide.
+// Размер задаётся модификатором, цвет наследуется от родителя (currentColor).
+// =============================================================================
+
+// Контейнер спрайта не должен занимать места в потоке.
+.icon-sprite { display: none; }
+
+.icon {
+  flex-shrink: 0;
+  width: 1.125rem;
+  height: 1.125rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+
+  &--2xs { width: 0.6875rem; height: 0.6875rem; }
+  &--xs  { width: 0.8125rem; height: 0.8125rem; }
+  &--sm  { width: 0.9375rem; height: 0.9375rem; }
+  &--md  { width: 1.125rem;  height: 1.125rem; }
+  &--lg  { width: 1.375rem;  height: 1.375rem; }
+  &--xl  { width: 1.75rem;   height: 1.75rem; }
+  &--2xl { width: 2.25rem;   height: 2.25rem; }
+
+  // Закрашенная звезда рейтинга.
+  &--filled { fill: currentColor; }
+
+  &--bold { stroke-width: 2.5; }
+}

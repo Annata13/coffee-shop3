@@ -1,0 +1,4 @@
+// Точка входа для абстракций: @use 'abstracts' as *;
+@forward 'colors';
+@forward 'breakpoints';
+@forward 'mixins';

@@ -1,0 +1,30 @@
+// =============================================================================
+// Блок: bean-divider — разделитель с зерном по центру.
+// =============================================================================
+@use '../abstracts' as *;
+
+.bean-divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--color-primary);
+
+  &__line {
+    height: 1px;
+    background-color: var(--color-border);
+
+    // Фиксированная база: внутри flex-колонки с align-items: flex-start
+    // растягивающаяся линия схлопнулась бы в ноль.
+    &--grow { flex: 0 1 5rem; }
+
+    &--short { flex: 0 0 5rem; }
+  }
+
+  &--light {
+    color: rgb(255 255 255 / 0.6);
+
+    .bean-divider__line { background-color: var(--color-border-light); }
+  }
+
+  &--center { justify-content: center; }
+}

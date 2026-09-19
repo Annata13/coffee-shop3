@@ -1,0 +1,27 @@
+// =============================================================================
+// Блок: container — единственный ограничитель ширины на проекте.
+// =============================================================================
+@use '../abstracts' as *;
+
+.container {
+  @include container;
+
+  &--narrow { max-width: 900px; }
+  &--wide { max-width: calc(var(--container-max) + 8rem); }
+}
+
+.section {
+  padding-block: var(--section-space);
+
+  &--dark {
+    background-color: var(--color-bg-dark);
+    color: var(--color-text-inverse);
+  }
+
+  &--tight { padding-block: clamp(2.5rem, 2rem + 2vw, 4rem); }
+}
+
+.page {
+  flex: 1 0 auto;
+  padding-top: var(--header-height);
+}

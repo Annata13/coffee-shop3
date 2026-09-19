@@ -1,0 +1,35 @@
+// =============================================================================
+// Coffee House — точка сборки стилей.
+//
+// Порядок важен: сначала токены и база, потом раскладка, компоненты и страницы.
+// Каждый файл в components/ соответствует одному БЭМ-блоку в разметке —
+// при переносе на React/Vue/Svelte файл переезжает вместе с компонентом.
+// =============================================================================
+
+// --- База --------------------------------------------------------------------
+@use 'base/tokens';
+@use 'base/reset';
+@use 'base/typography';
+
+// --- Раскладка ---------------------------------------------------------------
+@use 'layout/container';
+@use 'layout/page-header';
+
+// --- Компоненты --------------------------------------------------------------
+@use 'components/icon';
+@use 'components/button';
+@use 'components/badge';
+@use 'components/bean-divider';
+@use 'components/section-heading';
+@use 'components/stats';
+@use 'components/product-card';
+@use 'components/toolbar';
+@use 'components/empty-state';
+@use 'components/form';
+@use 'components/cards';
+
+// --- Страницы ----------------------------------------------------------------
+@use 'pages/home';
+@use 'pages/catalog';
+@use 'pages/product';
+@use 'pages/contact';

@@ -1,0 +1,121 @@
+// =============================================================================
+// Дизайн-токены. SCSS-палитра превращается в CSS-переменные — так тему можно
+// переопределить в рантайме и утащить в любой фреймворк без пересборки SCSS.
+// =============================================================================
+@use '../abstracts' as *;
+
+:root {
+  // --- Цвета: смысловые имена ------------------------------------------------
+  --color-bg:               #{$cream};
+  --color-bg-dark:          #{$espresso};
+  --color-surface:          #{$cream-soft};
+  --color-surface-muted:    #{$sand};
+  --color-surface-glass:    #{rgba($white, 0.65)};
+  --color-surface-glass-hi: #{rgba($white, 0.85)};
+
+  --color-text:             #{$espresso};
+  --color-text-muted:       #{$mocha};
+  --color-text-inverse:     #{$cream};
+  --color-text-on-dark:     #{$caramel};
+
+  --color-primary:          #{$terracotta};
+  --color-primary-hover:    #{$terracotta-dark};
+  --color-primary-active:   #{$terracotta-deep};
+  --color-primary-contrast: #{$white};
+
+  --color-dark:             #{$espresso};
+  --color-dark-hover:       #{$espresso-light};
+  --color-dark-active:      #{$espresso-deep};
+
+  --color-secondary:        #{$caramel};
+  --color-accent:           #{$forest};
+  --color-accent-soft:      #{rgba($forest, 0.1)};
+
+  --color-border:           #{rgba($caramel, 0.4)};
+  --color-border-strong:    #{rgba($caramel, 0.7)};
+  --color-border-dark:      #{rgba($espresso, 0.15)};
+  --color-border-light:     #{rgba($white, 0.3)};
+
+  --color-ring:             #{$terracotta};
+  --color-ring-soft:        #{rgba($terracotta, 0.35)};
+
+  --color-danger:           #{$danger};
+  --color-danger-soft:      #{$danger-soft};
+  --color-danger-border:    #{$danger-border};
+
+  // Плашки обжарки
+  --roast-light-bg:      #{$roast-light-bg};
+  --roast-light-text:    #{$roast-light-text};
+  --roast-medium-bg:     #{$roast-medium-bg};
+  --roast-medium-text:   #{$roast-medium-text};
+  --roast-md-dark-bg:    #{$roast-md-dark-bg};
+  --roast-md-dark-text:  #{$roast-md-dark-text};
+  --roast-dark-bg:       #{$roast-dark-bg};
+  --roast-dark-text:     #{$roast-dark-text};
+
+  // --- Типографика -----------------------------------------------------------
+  --font-sans:  'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-serif: 'Instrument Serif', 'Georgia', 'Times New Roman', serif;
+
+  --text-3xs:  0.625rem;                                   // 10px, надписи капсом
+  --text-2xs:  0.6875rem;                                  // 11px
+  --text-xs:   0.75rem;                                    // 12px
+  --text-sm:   0.875rem;                                   // 14px
+  --text-base: clamp(0.9375rem, 0.9rem + 0.18vw, 1.0625rem);
+  --text-lg:   clamp(1.0625rem, 1rem + 0.25vw, 1.25rem);
+  --text-xl:   clamp(1.25rem, 1.15rem + 0.4vw, 1.5rem);
+  --text-2xl:  clamp(1.5rem, 1.35rem + 0.6vw, 2rem);
+  --text-3xl:  clamp(1.875rem, 1.55rem + 1.3vw, 2.75rem);
+  --text-4xl:  clamp(2.25rem, 1.7rem + 2.2vw, 3.5rem);
+  --text-hero: clamp(2.75rem, 1.6rem + 4.6vw, 5.5rem);
+  --text-price: clamp(2rem, 1.6rem + 1.6vw, 3rem);
+
+  --leading-tight:  1.1;
+  --leading-snug:   1.3;
+  --leading-normal: 1.55;
+  --leading-relaxed: 1.7;
+  --tracking-wide:  0.08em;
+  --tracking-wider: 0.16em;
+
+  // --- Раскладка -------------------------------------------------------------
+  --container-max:    1280px;
+  --container-gutter: 1rem;
+  --header-height:    4rem;
+  --section-space:    clamp(3.5rem, 2.5rem + 4vw, 7rem);
+  --grid-gap:         clamp(1rem, 0.6rem + 1.4vw, 1.75rem);
+
+  // --- Скругления и тени -----------------------------------------------------
+  --radius-xs: 0.5rem;
+  --radius-sm: 0.75rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.25rem;
+  --radius-xl: 1.75rem;
+  --radius-pill: 999px;
+
+  --shadow-xs: 0 1px 2px rgb(60 36 21 / 0.06);
+  --shadow-sm: 0 2px 8px rgb(60 36 21 / 0.08);
+  --shadow-md: 0 8px 24px rgb(60 36 21 / 0.12);
+  --shadow-lg: 0 18px 45px rgb(60 36 21 / 0.18);
+  --shadow-primary: 0 12px 28px rgb(198 123 92 / 0.32);
+
+  // --- Движение --------------------------------------------------------------
+  --duration-fast:   140ms;
+  --duration-normal: 260ms;
+  --duration-slow:   480ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  // --- Слои ------------------------------------------------------------------
+  --z-sticky: 30;
+  --z-header: 50;
+  --z-dropdown: 60;
+
+  @include from(xs) { --container-gutter: 1.5rem; }
+  @include from(md) { --container-gutter: 2.5rem; }
+  @include from(lg) { --container-gutter: 3rem; }
+
+  // На больших экранах контент не растягиваем в строку на весь монитор,
+  // а даём ему вырасти ступенчато — иначе на 2K текст читается как лента.
+  @include from(wide)  { --container-max: 1520px; }
+  @include from(ultra) { --container-max: 1760px; }
+}

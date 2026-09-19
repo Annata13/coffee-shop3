@@ -1,0 +1,71 @@
+// =============================================================================
+// Страница: контакты.
+// =============================================================================
+@use '../abstracts' as *;
+
+.contact {
+  &__inner {
+    @include container;
+    display: grid;
+    gap: clamp(2.5rem, 2rem + 3vw, 4rem);
+    grid-template-columns: 1fr;
+    padding-block: clamp(2.5rem, 2rem + 3vw, 4.5rem);
+    align-items: start;
+
+    @include from(lg) { grid-template-columns: 1.4fr 1fr; }
+  }
+
+  &__title {
+    font-family: var(--font-serif);
+    font-size: var(--text-3xl);
+    line-height: var(--leading-tight);
+  }
+
+  &__accent {
+    font-style: italic;
+    color: var(--color-primary);
+  }
+
+  &__divider { margin-block: 1rem; }
+
+  &__lead {
+    margin-bottom: 2rem;
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+  }
+
+  &__aside {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+}
+
+// Блок: map-embed — карта-заглушка под контактами.
+.map-embed {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface-muted);
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--duration-slow) var(--ease-out);
+  }
+
+  &:hover &__image { transform: scale(1.04); }
+
+  &__pin {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary);
+    pointer-events: none;
+  }
+}

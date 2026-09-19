@@ -1,0 +1,58 @@
+// =============================================================================
+// Блок: page-header — тёмная шапка внутренних страниц (каталог, контакты).
+// =============================================================================
+@use '../abstracts' as *;
+
+.page-header {
+  padding-block: clamp(2.5rem, 2rem + 3vw, 4rem);
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-inverse);
+
+  &__title {
+    margin-top: 0.75rem;
+    font-family: var(--font-serif);
+    font-size: var(--text-4xl);
+    line-height: var(--leading-tight);
+  }
+
+  &__accent {
+    font-style: italic;
+    color: var(--color-secondary);
+  }
+
+  &__divider { margin-top: 1.25rem; }
+
+  // Вариант с фоновой фотографией — страница контактов.
+  &--media {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    min-height: clamp(15rem, 12rem + 14vw, 22rem);
+    padding-block: 0;
+    overflow: hidden;
+  }
+
+  &__media {
+    position: absolute;
+    inset: 0;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.35;
+  }
+
+  &__scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, var(--color-bg-dark), rgb(60 36 21 / 0.15));
+  }
+
+  &__content {
+    position: relative;
+    width: 100%;
+    padding-block: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+  }
+}

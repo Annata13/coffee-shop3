@@ -1,0 +1,132 @@
+// =============================================================================
+// Блок: button
+// Модификаторы: --primary --dark --ghost --link --block --sm
+// =============================================================================
+@use '../abstracts' as *;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.5rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: center;
+  cursor: pointer;
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-normal) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
+  @include focus-ring;
+
+  &:active { transform: scale(0.97); }
+
+  &:disabled,
+  &[aria-disabled='true'] {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  // Стрелка внутри кнопки уезжает вправо на hover.
+  &__arrow { transition: transform var(--duration-normal) var(--ease-out); }
+
+  &:hover &__arrow { transform: translateX(3px); }
+
+  // --- Основная (терракота) --------------------------------------------------
+  &--primary {
+    background-color: var(--color-primary);
+    color: var(--color-primary-contrast);
+    box-shadow: var(--shadow-primary);
+
+    &:hover {
+      background-color: var(--color-primary-hover);
+      box-shadow: 0 16px 32px rgb(198 123 92 / 0.4);
+    }
+
+    &:active { background-color: var(--color-primary-active); }
+  }
+
+  // --- Тёмная (эспрессо) -----------------------------------------------------
+  &--dark {
+    background-color: var(--color-dark);
+    color: var(--color-text-inverse);
+    box-shadow: var(--shadow-md);
+
+    &:hover { background-color: var(--color-dark-hover); }
+    &:active { background-color: var(--color-dark-active); }
+  }
+
+  // --- Прозрачная со стеклом -------------------------------------------------
+  &--ghost {
+    border-color: var(--color-border-strong);
+    color: var(--color-text);
+    @include glass(rgb(255 255 255 / 0.55), 8px);
+
+    &:hover {
+      background-color: rgb(255 255 255 / 0.85);
+      border-color: var(--color-primary);
+    }
+
+    &:active { background-color: rgb(255 255 255 / 0.7); }
+  }
+
+  // --- Текстовая ссылка-кнопка -----------------------------------------------
+  &--link {
+    padding: 0.35rem 0.25rem;
+    color: var(--color-primary);
+    box-shadow: none;
+
+    &:hover {
+      color: var(--color-primary-hover);
+      gap: 0.75rem;
+    }
+
+    &:active { color: var(--color-primary-active); }
+  }
+
+  &--underline {
+    padding: 0.35rem 0.25rem;
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+
+    &:hover { color: var(--color-primary-hover); }
+  }
+
+  &--block { width: 100%; }
+
+  &--sm {
+    padding: 0.55rem 1rem;
+    font-size: var(--text-xs);
+  }
+
+  &--lg { padding: 1rem 1.75rem; }
+
+  // Состояние отправки формы.
+  &.is-loading {
+    cursor: wait;
+    background-color: var(--color-primary-hover);
+
+    .button__spinner {
+      display: block;
+      animation: button-spin 900ms linear infinite;
+    }
+
+    .button__label-idle { display: none; }
+    .button__label-loading { display: inline; }
+  }
+
+  &__spinner { display: none; }
+  &__label-loading { display: none; }
+}
+
+@keyframes button-spin {
+  to { transform: rotate(360deg); }
+}
