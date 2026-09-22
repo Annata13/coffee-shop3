@@ -2,16 +2,20 @@
   <!-- ========== Компонент: footer ========== -->
   <footer class="footer">
     <div class="footer__inner">
-      <a class="logo logo--inverse" href="index.html">
+      <RouterLink to="/" class="logo">
         <svg class="icon icon--md logo__icon" aria-hidden="true">
           <use href="#i-coffee"></use>
         </svg>
         Coffee House
-      </a>
+      </RouterLink>
 
       <nav class="footer__nav" aria-label="Footer">
-        <a class="footer__link" href="catalog.html">Our Coffee</a>
-        <a class="footer__link" href="contact.html">Contact</a>
+        <RouterLink to="/catalog" active-class="footer__link">
+          Our Coffee
+        </RouterLink>
+        <RouterLink to="/contact" active-class="footer__link">
+          Contact
+        </RouterLink>
       </nav>
 
       <p class="footer__copy">

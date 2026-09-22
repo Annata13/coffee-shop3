@@ -2,17 +2,26 @@
     <!-- ========== Компонент: header ========== -->
     <header class="header">
         <div class="header__inner">
-            <a class="logo" href="index.html">
+            <RouterLink to="/" class="logo">
                 <svg class="icon icon--lg logo__icon" aria-hidden="true">
                     <use href="#i-coffee"></use>
                 </svg>
-                Coffee House
-            </a>
+                Coffee Hous
+            </RouterLink>
 
             <nav class="header__nav" aria-label="Main">
-                <a class="header__link" href="catalog.html">Our Coffee</a>
-                <a class="header__link header__link--active" href="index.html" aria-current="page">For your pleasure</a>
-                <a class="header__link" href="contact.html">Contact</a>
+                <RouterLink to="/catalog" class="header__link" active-class="header__link--active"
+                    exact-active-class="header__link--active">
+                    Our Coffee
+                </RouterLink>
+                <RouterLink to="/" class="header__link" active-class="header__link--active"
+                    exact-active-class="header__link--active">
+                    For your pleasure
+                </RouterLink>
+                <RouterLink to="/contact" class="header__link" active-class="header__link--active"
+                    exact-active-class="header__link--active">
+                    Contact
+                </RouterLink>
             </nav>
 
             <button class="header__burger" type="button" aria-label="Open menu" aria-expanded="false"
@@ -29,10 +38,18 @@
         <div class="header__mobile" id="mobile-menu" data-menu-panel>
             <div class="header__mobile-inner">
                 <nav class="mobile-nav" aria-label="Mobile">
-                    <a class="mobile-nav__link" href="catalog.html">Our Coffee</a>
-                    <a class="mobile-nav__link mobile-nav__link--active" href="index.html" aria-current="page">For your
-                        pleasure</a>
-                    <a class="mobile-nav__link" href="contact.html">Contact</a>
+                    <RouterLink to="/catalog" class="mobile-nav__link" active-class="mobile-nav__link--active"
+                        exact-active-class="mobile-nav__link--active">
+                        Our Coffee
+                    </RouterLink>
+                    <RouterLink to="/" class="mobile-nav__link" active-class="mobile-nav__link--active"
+                        exact-active-class="mobile-nav__link--active">
+                        For your pleasure
+                    </RouterLink>
+                    <RouterLink to="/contact" class="mobile-nav__link" active-class="mobile-nav__link--active"
+                        exact-active-class="mobile-nav__link--active">
+                        Contact
+                    </RouterLink>
                 </nav>
             </div>
         </div>
